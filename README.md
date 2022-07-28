@@ -60,8 +60,8 @@ security group
 ### Deploy EC2 instance
 ```
 MongoDB EC2 instance
-Create a mongodb instance with an attache profile that give it access to all ec2 role 
-Backup mongodb to s3
+Create a mongodb instance with an attache profile that give it access to s3 bucket 
+Backup mongodb to s3 with public read
 ```
 ### Deploy EKS on AWS
 
