@@ -34,6 +34,26 @@ resource "aws_iam_instance_profile" "admin_profile" {
   role = "${aws_iam_role.admin_role.name}"
 }
 
+resource "aws_iam_role_policy" "ec2_policy" {
+  name = "ec2_policy"
+  role = "${aws_iam_role.admin_role.id}"
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "s3:*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+}
+
 # Define bitbucket-server inside the public subnet
 resource "aws_instance" "mongodb" {
   ami                    = var.ami-id
@@ -58,18 +78,11 @@ resource "aws_instance" "mongodb" {
     destination = "/tmp/scripts"
   }
 
-# copy AWS Access KEY to the server
-  provisioner "file" {
-    source      = "~/.ssh/aws-access-key"
-    destination = "/home/ec2-user/.aws-access-key"
-  }
-
 # Change permissions on bash script and execute from ec2-user
   provisioner "remote-exec" {
     inline = [
       "sudo chmod +x /tmp/scripts/mongo-setup.sh",
       "sudo /tmp/scripts/mongo-setup.sh",
-      "source /home/ec2-user/.aws-access-key",
       "sudo sh /tmp/scripts/s3-backup.sh"
     ]
   }

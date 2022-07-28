@@ -1,7 +1,4 @@
 #!/bin/sh
-# source AWS access key
-source /home/ec2-user/.aws-access-key
-
 export HOME=/home/ec2-user/
 
 HOST=localhost

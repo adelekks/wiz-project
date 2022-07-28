@@ -42,13 +42,6 @@ brew cask info visual-studio-code     # Displays information about the given Cas
 brew cask install visual-studio-code  # Install the given cask.
 brew cleanup                          # For all installed or specific formulae, 
 ```
-## Create AWS access file in your home dir for Monogodb to backup to  s3
-```
-vi ~/.ssh/aws-access-key
-export AWS_ACCESS_KEY_ID=xxxx-xxxxx-xxxx
-export AWS_SECRET_ACCESS_KEY=xxxx-xxxxx-xxxx
-```
-Save it
 ## create a SSH key pair
 ```
 ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -P ""
