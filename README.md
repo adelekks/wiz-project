@@ -5,6 +5,7 @@ What you need to start Homework
 2.	Window or Mac => Preferable Mac Laptop
 
 ## Tools:
+```
 For Windows
 visual studio code
 https://code.visualstudio.com/download
@@ -43,7 +44,7 @@ brew search visual-studio-code        # Searches all known Casks for a partial o
 brew cask info visual-studio-code     # Displays information about the given Cask
 brew cask install visual-studio-code  # Install the given cask.
 brew cleanup                          # For all installed or specific formulae, 
-
+```
 ## Create AWS access file in your home dir for Monogodb to backup to  s3
 ```
 vi ~/.ssh/aws-access-key
