@@ -56,28 +56,31 @@ ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -P ""
 ### AWS Infrastructure setup in aws via terraform
 Terraform will create all below
 ### Network Setup
+```
 VPC 
 Three private subnets
 Three public subnets
 Three AZ  
 Net gateway
 security group
-
+```
 ### Deploy EC2 instance
+```
 MongoDB EC2 instance
 Create a mongodb instance with an attache profile that give it access to all ec2 role 
 Backup mongodb to s3
-
+```
 ### Deploy EKS on AWS
 
 ## Run custom bash script to Setup 
+```
 Update kubeconfig 
 Create service account
 Deploy Jenkins POD
 Label Jenkins POD
 Create load balancer
 Apply the permissive access This gives all SA admin privis
-
+```
 ```
 sh scripts/setup.sh
 ```
