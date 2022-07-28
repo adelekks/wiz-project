@@ -29,7 +29,7 @@ while (allMadMen.hasNext()) {
 EOF
 
 ## Create script to collect data
-cat >> EOF > /opt/collect-data.js
+cat << EOF > /opt/collect-data.js
 //set a reference to all documents in the database
 allMadMen = db.names.find();
 
