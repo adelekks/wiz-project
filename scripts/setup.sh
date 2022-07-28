@@ -1,6 +1,4 @@
 #!/bin/bash 
-#EKS_NAME=`cat kubeconfig_education* | grep education |awk 'END{print $2}'`
-#aws eks --region us-west-2 update-kubeconfig --name `cat kubeconfig_education* | grep education |awk 'END{print $2}'`
 echo "==========================
 Please provide EKS cluster Name
 =========================="

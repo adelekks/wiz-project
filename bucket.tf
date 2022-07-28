@@ -1,9 +1,4 @@
 # Define S3 bucket
-#resource "aws_s3_bucket" "b" {
-#  bucket = "wizz-kenny-exercise"
-#  acl    = "public-read"
-#}
-
 data "aws_canonical_user_id" "current" {}
 
 resource "aws_s3_bucket" "b" {

@@ -14,9 +14,6 @@ https://blog.atom.io/2014/12/10/a-windows-installer-and-updater.html
 
 Git Bash
 https://git-scm.com/download/win
-Winscp
-https://winscp.net/eng/index.php
-
 
 For Mac
 Homebrew
@@ -25,10 +22,10 @@ Terraform
 brew install terraform  
 AWS cli
 brew update                  # Fetch latest version of homebrew and formula.
-brew search awscli       # Searches all known formula for a partial or exact match.
-brew info awscli           # Displays information about the given formula.
-brew install awscli        # Install the given formulae.
-brew cleanup                # Remove any older versions from the cellar.
+brew search awscli           # Searches all known formula for a partial or exact match.
+brew info awscli             # Displays information about the given formula.
+brew install awscli          # Install the given formulae.
+brew cleanup                 # Remove any older versions from the cellar.
 
 Kubectl cli
 brew install kubectl 
