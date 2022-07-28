@@ -6,43 +6,43 @@ What you need to start Homework
 
 Tools:
 For Windows
-•	visual studio code
-o	https://code.visualstudio.com/download
-•	Atom
-o	https://blog.atom.io/2014/12/10/a-windows-installer-and-updater.html
+visual studio code
+https://code.visualstudio.com/download
+Atom
+https://blog.atom.io/2014/12/10/a-windows-installer-and-updater.html
 
-•	Git Bash
-o	https://git-scm.com/download/win
-•	Winscp
-o	https://winscp.net/eng/index.php
+Git Bash
+https://git-scm.com/download/win
+Winscp
+https://winscp.net/eng/index.php
 
 
 For Mac
-•	Homebrew
-o	https://brew.sh/
-•	Terraform
-o	brew install terraform  
-•	AWS cli
-o	brew update                  # Fetch latest version of homebrew and formula.
-o	brew search awscli       # Searches all known formula for a partial or exact match.
-o	brew info awscli           # Displays information about the given formula.
-o	brew install awscli        # Install the given formulae.
-o	brew cleanup                # Remove any older versions from the cellar.
+Homebrew
+https://brew.sh/
+Terraform
+brew install terraform  
+AWS cli
+brew update                  # Fetch latest version of homebrew and formula.
+brew search awscli       # Searches all known formula for a partial or exact match.
+brew info awscli           # Displays information about the given formula.
+brew install awscli        # Install the given formulae.
+brew cleanup                # Remove any older versions from the cellar.
 
-•	Kubectl cli
-o	brew install kubectl 
-    or
-o	brew install kubernetes-cli
+Kubectl cli
+brew install kubectl 
+ or
+brew install kubernetes-cli
 
-•	Helm
-o	brew install helm
-•	visual studio code
-o	brew update                           # Fetch latest version of homebrew and formula.
-o	brew tap caskroom/cask                # Tap the Caskroom/Cask repository from Github using HTTPS.
-o	brew search visual-studio-code        # Searches all known Casks for a partial or exact match.
-o	brew cask info visual-studio-code     # Displays information about the given Cask
-o	brew cask install visual-studio-code  # Install the given cask.
-o	brew cleanup                          # For all installed or specific formulae, 
+Helm
+brew install helm
+visual studio code
+brew update                           # Fetch latest version of homebrew and formula.
+brew tap caskroom/cask                # Tap the Caskroom/Cask repository from Github using HTTPS.
+brew search visual-studio-code        # Searches all known Casks for a partial or exact match.
+brew cask info visual-studio-code     # Displays information about the given Cask
+brew cask install visual-studio-code  # Install the given cask.
+brew cleanup                          # For all installed or specific formulae, 
 
 ## Create AWS access file in your home dir for Monogodb to backup to  s3
 ```
