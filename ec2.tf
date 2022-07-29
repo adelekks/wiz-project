@@ -3,6 +3,22 @@ resource "aws_key_pair" "default" {
   key_name = "ken-mac"
   public_key = "${file("${var.key_path}")}"
 }
+locals {
+
+  user_data = <<-EOT
+  #!/bin/bash
+  mkdir /opt/scripts
+  cd /opt/scripts
+  aws s3 cp s3://mongodb-repo/mongo-setup.sh .
+  aws s3 cp s3://mongodb-repo/s3-backup.sh .
+  sudo sh /opt/scripts/mongo-setup.sh
+  sudo sh /opt/scripts/s3-backup.sh
+  EOT
+  tags = {
+    Owner       = "Kenny"
+    Team = "mongodb-server"
+  }
+}
 
 
 resource "aws_iam_role" "admin_role" {
@@ -54,42 +70,23 @@ resource "aws_iam_role_policy" "ec2_policy" {
 EOF
 }
 
-# Define bitbucket-server inside the public subnet
-resource "aws_instance" "mongodb" {
+module "ec2_instance" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "~> 3.0"
+
+  name = "mongodb-server"
+
   ami                    = var.ami-id
   instance_type          = var.instance_type
   key_name               = "${aws_key_pair.default.id}"
   monitoring             = true
   vpc_security_group_ids = [aws_security_group.mongodb_sg.id]
   subnet_id              = module.vpc.public_subnets[0]
-  iam_instance_profile = "${aws_iam_instance_profile.admin_profile.name}"
+  user_data_base64       = base64encode(local.user_data)
+  iam_instance_profile   = "${aws_iam_instance_profile.admin_profile.name}"
 
-# Login to the ec2-user with the aws key.
-  connection {
-    type        = "ssh"
-    user        = "ec2-user"
-    private_key = "${file("${var.key_path_priv}")}"
-    host        = self.public_ip
-  }
-
-# copy Mongodb script to the server
-  provisioner "file" {
-    source      = "scripts"
-    destination = "/tmp/scripts"
-  }
-
-# Change permissions on bash script and execute from ec2-user
-  provisioner "remote-exec" {
-    inline = [
-      "sudo chmod +x /tmp/scripts/mongo-setup.sh",
-      "sudo /tmp/scripts/mongo-setup.sh",
-      "sudo sh /tmp/scripts/s3-backup.sh"
-    ]
-  }
-
-tags          = {
-  Name        = "mongodb-server"
+tags = {
   Terraform   = "true"
   Environment = "dev"
- }
+}
 }
