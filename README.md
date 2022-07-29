@@ -75,9 +75,18 @@ Create load balancer
 Apply the permissive access This gives all SA admin privis
 ```
 ```
+terraform init 
+terraform plan
+terraform apply
 sh scripts/setup.sh
 ```
 Test Jenkins POD
 ```
 URL $LB:$PORT
+```
+## To Delete run
+```
+aws s3 rm s3://wiz-kenny-mongodb-backups/*.tar
+aws elb delete-load-balancer --load-balancer-name my-load-balancer
+terraform destroy
 ```
