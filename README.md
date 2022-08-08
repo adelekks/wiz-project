@@ -78,7 +78,43 @@ Apply the permissive access This gives all SA admin privis
 terraform init 
 terraform plan
 terraform apply
-sh scripts/setup.sh
+##sh scripts/setup.sh
+```
+## Update Kubeconfig
+```
+aws eks --region us-west-2 update-kubeconfig --name ${clustername}
+```
+## Create service account
+```
+kubectl create -f helm/serviceaccount.yaml
+```
+## Add helm repo
+```
+helm repo add jenkinsci https://charts.jenkins.io
+helm repo update
+```
+## Container Jenkins Application deployment
+## Deploy Jenkins app  via Helm 
+```
+helm install jenkins jenkinsci/jenkins
+```
+## Add label tp POD
+```
+kubectl label pods jenkins-0 app=jenkins
+```
+## Craete loadbalancer
+```
+kubectl create -f helm/loadbalancer.yaml
+```
+## Add container as Admin
+```
+RBAC permissions will not be suitable for production deployemnts because it allows ALL service accounts to act as cluster administrators. Any application running in a container receives service account credentials automatically, and could perform any action against the API, including viewing secrets and modifying permissions. This is not a recommended policy.
+
+kubectl create clusterrolebinding permissive-binding --clusterrole=cluster-admin --user=admin --user=kubelet --group=system:serviceaccounts
+```
+## Get container LB for Jenkins
+```
+kubectl get svc
 ```
 Test Jenkins POD
 ```
