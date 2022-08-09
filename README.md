@@ -75,10 +75,10 @@ Create load balancer
 Apply the permissive access This gives all SA admin privis
 ```
 ```
-terraform init 
-terraform plan
-terraform apply
-##sh scripts/setup.sh
+#terraform init 
+#terraform plan
+#terraform apply
+time sh scripts/setup.sh
 ```
 ## Update Kubeconfig
 ```
